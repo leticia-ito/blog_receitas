@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Todos as Receitas</h2>
+<section>
+  <p>
+    Muitos resultados? <a href="{% url 'posts:search' %}">Buscar Receitas</a>
+  </p>
+  <p>
+    Não encontrou a receita?
+    <a href="{% url 'posts:create' %}">Adicionar Nova Receita</a>
+  </p>
+</section>
+{% if post_list %}
+<section class="lista-de-cards">
+  {% for post in post_list %}
+  <article class="card">
+    <p>{{ post.title }}</p>
+    <a href="{% url 'posts:detail' post.id %}"
+      >Detalhes</a>
+  </article>
+  {% endfor %}
+</section>
+{% else %}
+<p>Não foi encontrado nenhuma receita.</p>
+{% endif %} {% endblock content %}

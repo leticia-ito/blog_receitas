@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Inserir Nova Receita</h2>
+<form method="POST" action="{% url 'posts:create' %}">
+  {% csrf_token %}
+  <p>
+    <label for="id_title">Receita:</label>
+    <input type="text" name="title" id="id_title" />
+  </p>
+  <p>
+    <label for="id_ingred">Ingredientes</label>
+    <input type ="text" name="ingred" id="id_ingred" />
+  </p>
+  <p>
+    <label for="id_mdf">Modo de fazer:</label>
+    <input type ="text" name="mdf" id="id_mdf" />
+  </p>
+  <button type="submit">Criar</button>
+</form>
+
+{% if post.created_at %}
+<p>Postado em: {{ post.created_at|date:"d/m/Y H:i" }}</p>
+{% endif %}
+
+{% endblock content %}

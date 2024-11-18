@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block title %} {{ post.title }} ({{
+    post.content }} {% endblock title %} {% block content %}
+    <h2>Detalhes da receita {{ post.title }}</h2>
+    
+    <section class="dados-da-receita">
+        <h3>Ingredientes:</h3> {{ post.ingred }}
+        <h3>Modo de fazer:</h3> {{ post.mdf }}
+        <p>Publicado em: {{ post.created_at|date:"d M Y H:i" }}</p>
+        <p>Atualizado em: {{ post.updated_at|date:"d M Y H:i" }}</p>
+        <a href="{% url 'posts:update' post.id %}">Editar</a> </br></br>
+        <a href="{% url 'posts:delete' post.id %}">Excluir</a>
+    </section>
+    
+    {% endblock content %}

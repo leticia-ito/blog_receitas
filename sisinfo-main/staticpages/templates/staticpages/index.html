@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Página Inicial
+{% endblock title %}
+
+{% block content %}
+<h1><i>De barriga cheia!</i></h1>
+<p>Tutoriais simples para aqueles que não sabem nem cozinhar arroz... (eu também era assim)</p> <br/>
+
+
+
+<section id="post">
+    {% for post in post_list %}
+    <article>
+        <header id="cabecalho-post">
+            <p>Publicado em: {{ post.created_at|date:"d M Y H:i" }}</p>
+            <p>Atualizado em: {{ post.updated_at|date:"d M Y H:i" }}</p>
+        </header>
+        <main id="conteiner-principal">
+            <h4>{{ post.title }}</h4>
+            <div>{{ post.ingred|safe }}</div>
+            <div>{{ post.mdf|safe }}</div>
+        </main>
+    </article>
+    {% endfor %}
+</section>
+{% endblock content %}
+
